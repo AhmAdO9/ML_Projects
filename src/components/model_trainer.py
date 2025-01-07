@@ -115,15 +115,9 @@ class ModelTrainer:
             }
             
 
-            model_report:dict=evaluate_model(x_train, x_test, y_train, y_test, models, Params)
+            model_report, best_model =evaluate_model(x_train, x_test, y_train, y_test, models, Params)
 
             logging.info(model_report)
-
-            sorted_report = sorted(model_report, key=lambda x: model_report[x], reverse=True)
-
-            best_model = models[sorted_report[0]]
-
-            logging.info(f'Best model among the given models was found to be: {best_model} with a r2 score of {model_report[sorted_report[0]]}')
 
             logging.info('Model training Complete')
 
